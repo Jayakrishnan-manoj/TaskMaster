@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:task_master/screens/sign_up.dart';
+import 'package:task_master/services/firefunctions.dart';
 import 'package:task_master/widgets/reusables.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -14,7 +15,7 @@ class _SignInScreenState extends State<SignInScreen> {
   final key = GlobalKey<FormState>();
   String email = "";
   String password = "";
-
+  Auth auth = Auth();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -107,7 +108,9 @@ class _SignInScreenState extends State<SignInScreen> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                         )),
-                    onPressed: () {},
+                    onPressed: () {
+                      auth.loginUser(email, password);
+                    },
                     child: const Text(
                       "Sign In",
                       style: TextStyle(
