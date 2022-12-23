@@ -16,8 +16,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor:const  Color.fromRGBO(208, 66, 255, 1),
-        scaffoldBackgroundColor:const  Color.fromRGBO(249,229,255,1)
+        primaryColor: Colors.indigo,
+        scaffoldBackgroundColor:Color.fromARGB(255, 215, 219, 251)
       ),
       home: SignInScreen(),
     );
