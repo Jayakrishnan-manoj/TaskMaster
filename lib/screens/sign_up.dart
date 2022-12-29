@@ -155,7 +155,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         recognizer: TapGestureRecognizer()
                           ..onTap = () => nextScreenReplace(
                                 context,
-                                const SignInScreen(),
+                                const SignUpScreen(),
                               ),
                       ),
                     ],

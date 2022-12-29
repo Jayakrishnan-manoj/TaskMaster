@@ -1,6 +1,5 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:task_master/screens/home_screen.dart';
 import 'package:task_master/screens/sign_up.dart';
 import 'package:task_master/screens/task_screen.dart';
 import 'package:task_master/services/firefunctions.dart';
@@ -113,7 +112,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           )),
                       onPressed: () {
                         auth.loginUser(email, password);
-                        nextScreenReplace(context,const HomeScreen());
+                        nextScreenReplace(context,const TaskScreen());
                       },
                       child: const Text(
                         "Sign In",
