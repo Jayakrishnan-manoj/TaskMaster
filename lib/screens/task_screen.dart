@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:task_master/widgets/app_drawer.dart';
+import 'package:task_master/widgets/reusables.dart';
 import 'package:task_master/widgets/task_card.dart';
 
 import '../widgets/bottom_navigation.dart';
+import 'new_task_form.dart';
 
 class TaskScreen extends StatefulWidget {
   const TaskScreen({super.key});
@@ -29,7 +31,7 @@ class _TaskScreenState extends State<TaskScreen> {
         centerTitle: true,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: ()=>nextScreen(context, TaskForm()),
         backgroundColor: Theme.of(context).primaryColor,
         child: const Icon(Icons.add),
       ),
