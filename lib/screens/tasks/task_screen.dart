@@ -4,7 +4,7 @@ import 'package:task_master/widgets/app_drawer.dart';
 import 'package:task_master/widgets/reusables.dart';
 import 'package:task_master/widgets/task_card.dart';
 
-import '../widgets/bottom_navigation.dart';
+import '../../widgets/bottom_navigation.dart';
 import 'new_task_form.dart';
 
 class TaskScreen extends StatefulWidget {

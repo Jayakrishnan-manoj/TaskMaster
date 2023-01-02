@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:task_master/screens/sign_up.dart';
-import 'package:task_master/screens/task_screen.dart';
+import 'package:task_master/screens/auth/sign_up.dart';
+import 'package:task_master/screens/tasks/task_screen.dart';
 import 'package:task_master/services/firefunctions.dart';
 import 'package:task_master/widgets/reusables.dart';
 

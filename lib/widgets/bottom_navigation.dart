@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:task_master/screens/notes_screen.dart';
+import 'package:task_master/screens/notes/notes_screen.dart';
 import 'package:task_master/widgets/reusables.dart';
 
-import '../screens/task_screen.dart';
+import '../screens/tasks/task_screen.dart';
 
 class BottomNavigation extends StatelessWidget {
   const BottomNavigation({super.key});

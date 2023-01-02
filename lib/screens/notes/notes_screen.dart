@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:task_master/widgets/app_drawer.dart';
 
-import '../widgets/bottom_navigation.dart';
+import '../../widgets/bottom_navigation.dart';
 
 class NotesScreen extends StatefulWidget {
   const NotesScreen({super.key});

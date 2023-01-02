@@ -1,9 +1,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:task_master/screens/sign_in.dart';
+import 'package:task_master/screens/auth/sign_in.dart';
 
-import '../widgets/reusables.dart';
-import '../services/firefunctions.dart';
+import '../../widgets/reusables.dart';
+import '../../services/firefunctions.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
