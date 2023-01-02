@@ -88,7 +88,7 @@ class _TaskFormState extends State<TaskForm> {
                       height: 10,
                     ),
                     Container(
-                      height: 300,
+                      height: 200,
                       child: Column(
                         children: [
                           Row(
@@ -96,13 +96,13 @@ class _TaskFormState extends State<TaskForm> {
                             children: [
                               Text(
                                 _selectedDate == null
-                                    ? "No Date Chosen"
+                                    ? "No Date Set"
                                     : DateFormat.yMMMd()
                                         .format(_selectedDate as DateTime),
                                 style: TextStyle(
                                   color: Theme.of(context).primaryColor,
                                   fontWeight: FontWeight.w500,
-                                  fontSize: 22,
+                                  fontSize: 18,
                                 ),
                               ),
                               ElevatedButton(
@@ -129,12 +129,13 @@ class _TaskFormState extends State<TaskForm> {
                             children: [
                               Text(
                                 _selectedTime == null
-                                    ? "No Time Chosen"
+                                    ? "No Time Set"
                                     : _selectedTime!.format(context),
                                 style: TextStyle(
-                                    color: Theme.of(context).primaryColor,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 22),
+                                  color: Theme.of(context).primaryColor,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 18,
+                                ),
                               ),
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(
@@ -155,6 +156,28 @@ class _TaskFormState extends State<TaskForm> {
                               )
                             ],
                           ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              ElevatedButton.icon(
+                                style: ElevatedButton.styleFrom(
+                                  elevation: 6,
+                                  backgroundColor:
+                                      Theme.of(context).primaryColor,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                ),
+                                onPressed: () {},
+                                icon: const Icon(Icons.add),
+                                label: const Text("Add Task"),
+                              ),
+                            ],
+                          )
                         ],
                       ),
                     )

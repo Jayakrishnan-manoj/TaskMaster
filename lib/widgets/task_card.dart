@@ -38,22 +38,18 @@ class TaskCard extends StatelessWidget {
               Row(
                 children: [
                   IconButton(
-                    icon: Icon(Icons.category),
-                    onPressed: () {
-                      // Add code to handle category button press here
-                    },
+                    icon: Icon(
+                      Icons.edit,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                    onPressed: () {},
                   ),
                   IconButton(
-                    icon: Icon(Icons.delete),
-                    onPressed: () {
-                      // Add code to handle delete button press here
-                    },
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.edit),
-                    onPressed: () {
-                      // Add code to handle edit button press here
-                    },
+                    icon: const Icon(
+                      Icons.delete,
+                      color: Colors.red,
+                    ),
+                    onPressed: () {},
                   ),
                 ],
               ),
