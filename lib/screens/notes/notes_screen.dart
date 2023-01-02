@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:task_master/screens/notes/new_note.dart';
 import 'package:task_master/widgets/app_drawer.dart';
+import 'package:task_master/widgets/reusables.dart';
 
 import '../../widgets/bottom_navigation.dart';
 
@@ -27,7 +29,9 @@ class _NotesScreenState extends State<NotesScreen> {
         centerTitle: true,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          nextScreen(context, NewNoteScreen());
+        },
         backgroundColor: Theme.of(context).primaryColor,
         child: const Icon(Icons.add),
       ),
