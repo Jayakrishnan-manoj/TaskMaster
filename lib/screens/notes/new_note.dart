@@ -29,6 +29,11 @@ class _NewNoteScreenState extends State<NewNoteScreen> {
           padding: EdgeInsets.all(7.0),
           child: SingleChildScrollView(
             child: Card(
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(15),
+                ),
+              ),
               elevation: 10,
               child: Column(
                 children: [
@@ -81,7 +86,26 @@ class _NewNoteScreenState extends State<NewNoteScreen> {
                             ),
                           ),
                         ),
-                        
+                        const SizedBox(
+                          height: 25,
+                        ),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Theme.of(context).primaryColor,
+                            elevation: 5,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                          onPressed: () {},
+                          child: const Text(
+                            "Add Note",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        )
                       ],
                     ),
                   )

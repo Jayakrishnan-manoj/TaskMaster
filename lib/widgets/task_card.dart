@@ -21,6 +21,8 @@ class TaskCard extends StatelessWidget {
     return SafeArea(
       child: SingleChildScrollView(
         child: Card(
+          shadowColor: Colors.indigo,
+          elevation: 10,
           child: Column(
             children: [
               ListTile(

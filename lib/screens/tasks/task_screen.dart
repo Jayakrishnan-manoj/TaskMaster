@@ -37,12 +37,15 @@ class _TaskScreenState extends State<TaskScreen> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomNavigation(),
-      body: Column(
-        children: [
-          TaskCard(title: "dummy",brief: "just dummy",date: "22-10-23",time: "11:10 AM",),
-          TaskCard(title: "dummy",brief: "just dummy",date: "22-10-23",time: "11:10 AM",),
-          TaskCard(title: "dummy",brief: "just dummy",date: "22-10-23",time: "11:10 AM",),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.only(top:5.0),
+        child: Column(
+          children: [
+            TaskCard(title: "dummy",brief: "just dummy",date: "22-10-23",time: "11:10 AM",),
+            TaskCard(title: "dummy",brief: "just dummy",date: "22-10-23",time: "11:10 AM",),
+            TaskCard(title: "dummy",brief: "just dummy",date: "22-10-23",time: "11:10 AM",),
+          ],
+        ),
       ),
       
     );

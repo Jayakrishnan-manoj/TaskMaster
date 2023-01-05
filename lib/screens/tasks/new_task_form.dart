@@ -67,6 +67,11 @@ class _TaskFormState extends State<TaskForm> {
           ),
           child: SingleChildScrollView(
             child: Card(
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(15),
+                ),
+              ),
               elevation: 10,
               child: Form(
                 child: Column(
