@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class TaskForm extends StatefulWidget {
-  const TaskForm({super.key});
+  final Function addTsk;
+  const TaskForm(this.addTsk);
 
   @override
   State<TaskForm> createState() => _TaskFormState();
 }
 
 class _TaskFormState extends State<TaskForm> {
-  TextEditingController titleController = TextEditingController();
-  TextEditingController descController = TextEditingController();
+  TextEditingController? titleController = TextEditingController();
+  TextEditingController? descController = TextEditingController();
   DateTime? _selectedDate;
   TimeOfDay? _selectedTime;
 
@@ -46,6 +45,24 @@ class _TaskFormState extends State<TaskForm> {
     });
   }
 
+  void _submitData() {
+    if (titleController!.text.isEmpty) {
+      return;
+    }
+    final enteredTitle = titleController!.text;
+    final enteredBrief = descController!.text;
+    if (enteredTitle == null ||
+        enteredBrief == null ||
+        _selectedDate == null ||
+        _selectedTime == null) {
+      return;
+    }
+
+    widget.addTsk(enteredTitle, enteredBrief, _selectedDate, _selectedTime);
+
+    Navigator.of(context).pop();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,17 +94,22 @@ class _TaskFormState extends State<TaskForm> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        labelText: "Task Name",
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: TextFormField(
+                        decoration: const InputDecoration(labelText: "Task Name"),
+                        controller: titleController,
+                        onFieldSubmitted: (_) => _submitData(),
                       ),
-                      controller: titleController,
                     ),
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        labelText: "Description",
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: TextFormField(
+                        decoration:
+                            const InputDecoration(labelText: "Description"),
+                        controller: descController,
+                        onFieldSubmitted: (_) => _submitData(),
                       ),
-                      controller: descController,
                     ),
                     const SizedBox(
                       height: 10,
@@ -177,7 +199,7 @@ class _TaskFormState extends State<TaskForm> {
                                     borderRadius: BorderRadius.circular(20),
                                   ),
                                 ),
-                                onPressed: () {},
+                                onPressed: _submitData,
                                 icon: const Icon(Icons.add),
                                 label: const Text("Add Task"),
                               ),

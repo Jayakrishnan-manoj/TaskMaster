@@ -1,20 +1,16 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:intl/intl.dart';
+
+import '../helpers/task.dart';
 
 class TaskCard extends StatelessWidget {
-  final String title;
-  final String brief;
-  final String date;
-  final String time;
   const TaskCard({
-    super.key,
-    required this.title,
-    required this.brief,
-    required this.date,
-    required this.time,
+    required this.task,
+    required this.deleteTask,
   });
+
+  final Task task;
+  final Function deleteTask;
 
   @override
   Widget build(BuildContext context) {
@@ -26,14 +22,14 @@ class TaskCard extends StatelessWidget {
           child: Column(
             children: [
               ListTile(
-                title: Text(title),
-                subtitle: Text(brief),
+                title: Text(task.title),
+                subtitle: Text(task.description),
                 trailing: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(date),
-                    SizedBox(width: 10),
-                    Text(time),
+                    Text(DateFormat.yMMMd().format(task.date)),
+                    const SizedBox(width: 20),
+                    Text(task.time.format(context)),
                   ],
                 ),
               ),
@@ -51,7 +47,9 @@ class TaskCard extends StatelessWidget {
                       Icons.delete,
                       color: Colors.red,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      deleteTask(task.id);
+                    },
                   ),
                 ],
               ),
