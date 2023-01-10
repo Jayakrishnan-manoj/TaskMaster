@@ -20,7 +20,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   String password = "";
   String fullName = "";
   bool _isLoading = false;
-  final FormKey = GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>();
   Auth auth = Auth();
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   right: 20,
                 ),
                 child: Form(
-                  key: FormKey,
+                  key: formKey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -127,7 +127,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           });
                         },
                         validator: (value) {
-                          if (value!.length > 8) {
+                          if (value!.length >= 8) {
                             return null;
                           } else {
                             return "password length must be 8 or greater";
@@ -144,8 +144,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30),
                               )),
-                          onPressed: () =>
-                              auth.signUpUser(fullName, email, password),
+                          onPressed: signup,
                           child: const Text(
                             "Sign Up",
                             style: TextStyle(
@@ -169,7 +168,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () => nextScreenReplace(
                                       context,
-                                      const SignUpScreen(),
+                                      const SignInScreen(),
                                     ),
                             ),
                           ],
@@ -184,7 +183,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   signup() async {
-    if (FormKey.currentState!.validate()) {
+    if (formKey.currentState!.validate()) {
       setState(() {
         _isLoading = true;
       });

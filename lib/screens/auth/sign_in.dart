@@ -43,6 +43,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     right: 20,
                   ),
                   child: Form(
+                    key: key,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -124,7 +125,10 @@ class _SignInScreenState extends State<SignInScreen> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30),
                                 )),
-                            onPressed: login,
+                            onPressed: (){
+                              login;
+                              print("login done"); 
+                            },
                             child: const Text(
                               "Sign In",
                               style: TextStyle(
@@ -168,21 +172,23 @@ class _SignInScreenState extends State<SignInScreen> {
       setState(() {
         _isLoading = true;
       });
-      await auth.loginUser(email, password).then((value) async {
-        if (value == true) {
-          QuerySnapshot snapshot =
-              await Database(uid: FirebaseAuth.instance.currentUser!.uid)
-                  .getUserData(email);
-          await HelperFunctions.saveUserLoggedInStatus(true);
-          await HelperFunctions.saveUserEmail(email);
-          await HelperFunctions.saveUserName(snapshot.docs[0]["fullName"]);
-          nextScreenReplace(context, const TaskScreen());
-        } else {
-          setState(() {
-            _isLoading = false;
-          });
-        }
-      });
+      await auth.loginUser(email, password).then(
+        ((value) async {
+          if (value == true) {
+            QuerySnapshot snapshot =
+                await Database(uid: FirebaseAuth.instance.currentUser!.uid)
+                    .getUserData(email);
+            await HelperFunctions.saveUserLoggedInStatus(true);
+            await HelperFunctions.saveUserEmail(email);
+            await HelperFunctions.saveUserName(snapshot.docs[0]["fullName"]);
+            nextScreenReplace(context, const TaskScreen());
+          } else {
+            setState(() {
+              _isLoading = false;
+            });
+          }
+        }),
+      );
     }
   }
 }
