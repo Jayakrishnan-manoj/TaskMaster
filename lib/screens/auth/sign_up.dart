@@ -1,6 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:task_master/screens/auth/sign_in.dart';
+import 'package:task_master/screens/tasks/task_screen.dart';
+import 'package:task_master/services/shared_functions.dart';
 
 import '../../widgets/reusables.dart';
 import '../../services/firefunctions.dart';
@@ -16,6 +18,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   String email = "";
   String password = "";
   String fullName = "";
+  bool _isLoading = false;
   final FormKey = GlobalKey<FormState>();
   Auth auth = Auth();
   @override
@@ -168,4 +171,26 @@ class _SignUpScreenState extends State<SignUpScreen> {
       ),
     );
   }
+
+  signup() async {
+    if(FormKey.currentState!.validate()){
+      setState(() {
+        _isLoading = true;
+      });
+      await auth.signUpUser(fullName, email, password).then((value) async{
+        if(value == true){
+          await HelperFunctions.saveUserEmail(email);
+          await HelperFunctions.saveUserLoggedInStatus(true);
+          await HelperFunctions.saveUserName(fullName);
+          nextScreenReplace(context, const TaskScreen());
+        } else {
+          setState(() {
+            _isLoading = false;
+          });
+        }
+      });
+    }
+  }
+
+
 }
