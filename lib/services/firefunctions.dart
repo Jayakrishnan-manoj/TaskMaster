@@ -24,6 +24,10 @@ class Auth {
       User user = (await auth.signInWithEmailAndPassword(
               email: email, password: password))
           .user!;
+      return true;
+      // if(user!=null){
+      //   return true;
+      // }
     } on FirebaseAuthException catch (err) {
       return err.message;
     }

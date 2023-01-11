@@ -5,6 +5,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:task_master/database/database.dart';
 import 'package:task_master/screens/auth/sign_up.dart';
+import 'package:task_master/screens/notes/new_note.dart';
 import 'package:task_master/screens/tasks/task_screen.dart';
 import 'package:task_master/services/firefunctions.dart';
 import 'package:task_master/services/shared_functions.dart';
@@ -125,10 +126,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30),
                                 )),
-                            onPressed: (){
-                              login;
-                              print("login done"); 
-                            },
+                            onPressed: login,
                             child: const Text(
                               "Sign In",
                               style: TextStyle(
@@ -174,18 +172,22 @@ class _SignInScreenState extends State<SignInScreen> {
       });
       await auth.loginUser(email, password).then(
         ((value) async {
+          print(value);
           if (value == true) {
             QuerySnapshot snapshot =
                 await Database(uid: FirebaseAuth.instance.currentUser!.uid)
                     .getUserData(email);
+            print(snapshot);
             await HelperFunctions.saveUserLoggedInStatus(true);
             await HelperFunctions.saveUserEmail(email);
             await HelperFunctions.saveUserName(snapshot.docs[0]["fullName"]);
             nextScreenReplace(context, const TaskScreen());
-          } else {
+          } 
+          else {
             setState(() {
               _isLoading = false;
             });
+            print("invalid user");
           }
         }),
       );
